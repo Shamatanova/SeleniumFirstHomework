@@ -51,10 +51,12 @@ public class SearchTermTests {
         searchBox.sendKeys(SEARCH_TERM);
         searchBox.sendKeys(Keys.ENTER);
 
-        WebElement firstResult = driver.findElement(By.xpath("//h2[@class=' b_topTitle']"));
-        wait.until(ExpectedConditions.visibilityOf(firstResult));
+         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy
+                (By.xpath("//h2[@class=' b_topTitle']")));
+        WebElement firstResult = driver.findElement
+                (By.xpath("//h2[@class=' b_topTitle']"));
 
-        Assertions.assertTrue(firstResult.getText().contains(EXPECTED_TEXT), "Search result not found");
+        Assertions.assertTrue(firstResult.getText().contains(SEARCH_TERM), "Search result not found");
     }
 
     @Test
